@@ -206,6 +206,9 @@
   .redes a:hover{background:var(--azafran);border-color:var(--azafran);color:var(--noche);}
   .redes svg{width:17px;height:17px;fill:currentColor;}
   footer .redes a{border-color:rgba(245,239,227,.25);}
+  .redes-sobre{margin-top:26px;}
+  .redes-sobre a{width:42px;height:42px;border-color:rgba(33,28,21,.25);color:var(--tinta);}
+  .redes-sobre svg{width:19px;height:19px;}
 
   /* ---------- reservar ---------- */
   .reservar{
@@ -250,20 +253,27 @@
     .hero-dato{justify-self:start;text-align:left;}
     .sobre,.ubicacion,.reservar{grid-template-columns:1fr;}
     .reservar{gap:32px;}
-    .sobre-fotos{order:-1;}
+    .sobre-fotos{order:-1;grid-template-columns:1fr;}
+    .sobre-fotos .baja{display:none;}
+    .sobre-fotos .alta{aspect-ratio:16/10;grid-row:span 1;}
     .rejilla-carta{grid-template-columns:repeat(2,1fr);}
     .galeria{grid-template-columns:repeat(4,1fr);grid-auto-rows:110px;}
     .galeria .g1,.galeria .g3{grid-column:span 2;grid-row:span 2;}
   }
   @media (max-width:560px){
     section{padding:60px 0;}
-    .rejilla-carta{grid-template-columns:1fr;}
-    .galeria{grid-template-columns:repeat(2,1fr);}
-    .galeria .g1,.galeria .g2,.galeria .g3,.galeria .g4{grid-column:span 2;grid-row:span 1;aspect-ratio:4/3;height:auto;}
-    .franja-info .envoltura{flex-direction:column;gap:10px;}
+    .rejilla-carta{grid-template-columns:repeat(2,1fr);gap:10px;background:transparent;border:none;}
+    .tarjeta-plato{padding:14px 12px 16px;border-radius:4px;border:1px solid var(--linea-clara);}
+    .tarjeta-plato .foto{margin-bottom:12px;}
+    .tarjeta-plato h3{font-size:16px;margin-bottom:8px;}
+    .lista-platos li{font-size:12.5px;padding:5px 0;}
+    .galeria{grid-template-columns:repeat(2,1fr);gap:12px;}
+    .galeria .g1,.galeria .g2,.galeria .g3,.galeria .g4{grid-column:span 1;grid-row:span 1;aspect-ratio:1/1;height:auto;}
+    .franja-info .envoltura{flex-direction:column;padding-top:12px;padding-bottom:12px;gap:6px;}
+    .franja-info .item{font-size:13px;}
     .hero{padding-top:84px;}
     .hero .envoltura{padding-bottom:44px;gap:28px;}
-    .hero-dato{text-align:left;}
+    .hero-dato{text-align:right;justify-self:end;}
     .resenas{gap:20px;}
     .resenas .puntuacion{font-size:42px;}
     .tarjeta-reserva{padding:26px 20px;}
@@ -296,7 +306,7 @@
       <p class="intro">Cocina nepalí hecha a mano y la barra de toda la vida, una al lado de la otra: barbacoa, curry casero, cócteles y sangría en una terraza de Torrent de l'Olla.</p>
       <div class="cta-fila">
         <a href="#carta" class="btn btn-primario">Ver la carta</a>
-        <a href="tel:+34675192509" class="btn btn-secundario">Llamar para reservar</a>
+        <a href="tel:+34675192509" class="btn btn-secundario">Llamar</a>
       </div>
     </div>
     <div class="hero-dato">
@@ -325,6 +335,11 @@
       </div>
       <p>Bar Katmandu nace del cruce entre dos maneras de sentarse a comer: la cocina nepalí de siempre —momos plegados a mano, curry a fuego lento, barbacoa marinada con especias del Himalaya— y la terraza de barrio, con su caña fría y su sangría de jarra.</p>
       <p>No hace falta saber pronunciar bien "thukpa" o "secuwa" la primera vez que vienes. Se aprende comiendo, con la mesa llena y la terraza abierta hasta que cierra el barrio.</p>
+      <div class="redes redes-sobre">
+        <a href="#" aria-label="Instagram (pendiente de conectar)"><svg viewBox="0 0 24 24"><path d="M12 2.2c2.7 0 3 0 4.1.06 1.1.05 1.8.22 2.2.37.5.2.9.44 1.3.85.4.4.65.8.85 1.3.15.4.32 1.1.37 2.2.06 1.1.06 1.4.06 4.1s0 3-.06 4.1c-.05 1.1-.22 1.8-.37 2.2-.2.5-.44.9-.85 1.3-.4.4-.8.65-1.3.85-.4.15-1.1.32-2.2.37-1.1.06-1.4.06-4.1.06s-3 0-4.1-.06c-1.1-.05-1.8-.22-2.2-.37-.5-.2-.9-.44-1.3-.85-.4-.4-.65-.8-.85-1.3-.15-.4-.32-1.1-.37-2.2-.06-1.1-.06-1.4-.06-4.1s0-3 .06-4.1c.05-1.1.22-1.8.37-2.2.2-.5.44-.9.85-1.3.4-.4.8-.65 1.3-.85.4-.15 1.1-.32 2.2-.37 1.1-.06 1.4-.06 4.1-.06M12 0C9.28 0 8.94 0 7.87.06c-1.07.05-1.8.22-2.43.47-.66.26-1.22.6-1.77 1.16-.56.55-.9 1.11-1.16 1.77-.25.64-.42 1.36-.47 2.43C2 6.94 2 7.28 2 10s0 3.06.06 4.13c.05 1.07.22 1.8.47 2.43.26.66.6 1.22 1.16 1.77.55.56 1.11.9 1.77 1.16.64.25 1.36.42 2.43.47C8.94 20 9.28 20 12 20s3.06 0 4.13-.06c1.07-.05 1.8-.22 2.43-.47.66-.26 1.22-.6 1.77-1.16.56-.55.9-1.11 1.16-1.77.25-.64.42-1.36.47-2.43.06-1.07.06-1.41.06-4.13s0-3.06-.06-4.13c-.05-1.07-.22-1.8-.47-2.43-.26-.66-.6-1.22-1.16-1.77-.55-.56-1.11-.9-1.77-1.16-.64-.25-1.36-.42-2.43-.47C15.06 0 14.72 0 12 0Zm0 4.87A5.13 5.13 0 1 0 12 15.1 5.13 5.13 0 0 0 12 4.87Zm0 8.46a3.33 3.33 0 1 1 0-6.66 3.33 3.33 0 0 1 0 6.66Zm5.34-8.66a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z"/></svg></a>
+        <a href="#" aria-label="Facebook (pendiente de conectar)"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"/></svg></a>
+        <a href="https://wa.me/34675192509" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 0C5.7 0 .6 5.1.6 11.4c0 2 .5 3.9 1.5 5.6L.5 24l7.2-1.9c1.6.9 3.4 1.3 5.3 1.3 6.3 0 11.4-5.1 11.4-11.4C24.4 5.1 19.3 0 13 0h-1Zm5.9 16.3c-.3.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-5-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1.1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.3.6.9 2.1 1 2.2.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.1.1.7-.2 1.4Z"/></svg></a>
+      </div>
     </div>
   </div>
 </section>
