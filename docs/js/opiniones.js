@@ -114,10 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(datos),
       });
 
-      const resultado = await respuesta.json();
-
       if (!respuesta.ok) {
-        throw new Error(resultado.error || 'No se pudo publicar la opinión.');
+        // El servidor SÍ ha respondido, pero ha rechazado los datos
+        // (validación) -> mostramos el motivo real que da la API.
+        const resultado = await respuesta.json().catch(() => ({}));
+        mostrarEstado(resultado.error || 'No se pudo publicar la opinión. Revisa los datos.', 'error');
+        return;
       }
 
       mostrarEstado('¡Gracias por tu opinión!', 'ok');
@@ -130,8 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       cargarOpiniones();
     } catch (error) {
+      // Aquí solo caen fallos de conexión de verdad (no ha llegado a responder)
       console.error(error);
-      mostrarEstado('Hubo un problema al enviar tu opinión. Inténtalo de nuevo.', 'error');
+      mostrarEstado('No se ha podido contactar con el servidor. Inténtalo de nuevo en un momento.', 'error');
     } finally {
       btn.disabled = false;
     }
