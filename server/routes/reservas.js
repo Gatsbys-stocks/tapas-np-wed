@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
     return res.status(400).json({ error: errores.join(' ') });
   }
 
-  const { fecha, hora, personas, nombre, telefono } = req.body;
+  const { fecha, hora, personas, nombre, telefono, comentarios } = req.body;
 
   const reserva = {
     id: randomUUID(),
@@ -51,6 +51,7 @@ router.post('/', (req, res) => {
     personas,
     nombre: nombre.trim(),
     telefono: telefono.trim(),
+    comentarios: (comentarios || '').trim().slice(0, 500),
     estado: 'pendiente', // pendiente | confirmada | cancelada
     creadaEn: new Date().toISOString(),
   };
