@@ -2,15 +2,6 @@
 
 Sitio web para **Bar Katmandu**, terraza y cocina nepalí en el barrio de Gràcia (Barcelona). El proyecto incluye la web pública, un sistema de **reservas de mesa** funcional y una sección de **opiniones de clientes** publicadas directamente desde la web, con una pequeña API en Node.js/Express detrás.
 
-## Demo rápida
-
-```bash
-npm install
-npm start
-```
-
-Abre `http://localhost:3000`.
-
 ## Características
 
 - Web informativa: carta, galería, ubicación con mapa embebido, datos de contacto.
@@ -102,13 +93,6 @@ Por simplicidad y para no depender de un servicio externo, los datos se guardan 
 
 Si el proyecto creciera (varios locales, más tráfico, necesidad de backups automáticos), el único fichero que habría que tocar es `server/db.js`: se sustituiría por una conexión a SQLite o PostgreSQL sin cambiar las rutas de la API.
 
-## Próximas mejoras (roadmap)
-
-- [ ] Panel de administración sencillo para confirmar/cancelar reservas desde el navegador (la API ya lo soporta vía `PATCH`).
-- [ ] Notificación por email o WhatsApp al recibir una reserva nueva.
-- [ ] Moderación de opiniones antes de publicarlas (el campo `publicada` ya existe en el modelo de datos).
-- [ ] Migrar el almacenamiento de JSON a una base de datos real si el tráfico lo justifica.
-- [ ] Tests automáticos de la API (Jest + Supertest).
 
 ## Instalación en desarrollo
 
