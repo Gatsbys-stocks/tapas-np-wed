@@ -265,7 +265,7 @@
         <div class="fila-2">
           <div class="campo">
             <label for="r-fecha">Fecha</label>
-            <input type="date" id="r-fecha" name="fecha" required>
+            <input type="date" id="r-fecha" name="fecha" required readonly onkeydown="return false;">
           </div>
           <div class="campo">
             <label for="r-hora">Hora</label>
@@ -297,6 +297,10 @@
         <div class="campo">
           <label for="r-telefono">Teléfono de contacto</label>
           <input type="tel" id="r-telefono" name="telefono" placeholder="600 000 000" required pattern="[0-9+\s]{9,15}">
+        </div>
+        <div class="campo">
+          <label for="r-comentarios">Comentarios (opcional)</label>
+          <textarea id="r-comentarios" name="comentarios" placeholder="Alguna petición especial, alergias, si celebráis algo..."></textarea>
         </div>
         <button type="submit" class="btn btn-primario" id="btn-enviar-reserva">Enviar solicitud</button>
         <p class="estado-reserva" id="estado-reserva" role="status"></p>
