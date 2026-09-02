@@ -54,17 +54,20 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(datos),
       });
 
-      const resultado = await respuesta.json();
-
       if (!respuesta.ok) {
-        throw new Error(resultado.error || 'No se pudo enviar la reserva.');
+        // El servidor SÍ ha respondido, pero ha rechazado los datos
+        // (validación) -> mostramos el motivo real que da la API.
+        const resultado = await respuesta.json().catch(() => ({}));
+        mostrarEstado(resultado.error || 'No se pudo enviar la reserva. Revisa los datos.', 'error');
+        return;
       }
 
       mostrarEstado('¡Solicitud recibida! Te confirmaremos por teléfono en breve.', 'ok');
       form.reset();
     } catch (error) {
+      // Aquí solo caen fallos de conexión de verdad (no ha llegado a responder)
       console.error(error);
-      mostrarEstado('Hubo un problema al enviar tu reserva. Llámanos al 675 19 25 09 mientras tanto.', 'error');
+      mostrarEstado('No se ha podido contactar con el servidor. Llámanos al 675 19 25 09 mientras tanto.', 'error');
     } finally {
       btn.disabled = false;
     }
