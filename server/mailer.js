@@ -1,64 +1,57 @@
-// Envío de emails de notificación (nuevas reservas).
+// Envío de emails de notificación (nuevas reservas) usando la API HTTP de Brevo.
+//
+// Usamos HTTP y no SMTP a propósito: Render bloquea las conexiones salientes
+// a los puertos SMTP (25/465/587) en su plan gratuito, así que nodemailer con
+// Gmail nunca funcionará ahí. La API de Brevo va por HTTPS (puerto 443), que
+// no está bloqueado.
 //
 // Configuración por variables de entorno (ver .env.example):
-//   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS -> credenciales del correo
-//   RESERVA_EMAIL_TO                            -> email de la empresa que recibe el aviso
+//   BREVO_API_KEY       -> API key de tu cuenta de Brevo (gratis)
+//   BREVO_SENDER_EMAIL  -> email remitente, verificado en Brevo (Senders)
+//   RESERVA_EMAIL_TO    -> email de la empresa que recibe el aviso
 //
 // Si no están configuradas, no se envía nada y solo se avisa por consola,
 // para que la web nunca deje de aceptar reservas por un fallo de email.
 
-const nodemailer = require('nodemailer');
-const dns = require('dns');
+const { BREVO_API_KEY, BREVO_SENDER_EMAIL, RESERVA_EMAIL_TO } = process.env;
 
-// Muchos hosts en la nube (Render incluido) tienen rota la ruta IPv6 hacia
-// Gmail: Node intenta conectar por IPv6 primero, nunca llega respuesta y la
-// conexión SMTP muere con "Connection timeout". Forzamos IPv4 para evitarlo.
-try {
-  dns.setDefaultResultOrder('ipv4first');
-} catch (error) {
-  // Node < 17 no tiene este método; en ese caso seguimos con el comportamiento por defecto.
-}
+const configurado = Boolean(BREVO_API_KEY && BREVO_SENDER_EMAIL && RESERVA_EMAIL_TO);
 
-const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, RESERVA_EMAIL_TO } = process.env;
-
-const configurado = Boolean(SMTP_HOST && SMTP_USER && SMTP_PASS && RESERVA_EMAIL_TO);
-
-let transportador = null;
-
-if (configurado) {
-  transportador = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port: Number(SMTP_PORT) || 587,
-    secure: Number(SMTP_PORT) === 465, // true solo si se usa el puerto 465
-    auth: { user: SMTP_USER, pass: SMTP_PASS },
-    family: 4, // fuerza IPv4 también a nivel de socket, por si acaso
-    connectionTimeout: 15000,
-  });
-} else {
+if (!configurado) {
   console.warn(
     '[mailer] Faltan variables de entorno de email (ver .env.example). ' +
       'Las reservas se guardarán, pero no se enviará ningún aviso por correo.'
   );
 }
 
-function formatearReserva(reserva) {
-  const partes = [
-    `Fecha: ${reserva.fecha}`,
-    `Hora: ${reserva.hora}`,
-    `Personas: ${reserva.personas}`,
-    `Nombre: ${reserva.nombre}`,
-    `Teléfono: ${reserva.telefono}`,
-    `Email del cliente: ${reserva.email}`,
-  ];
-  if (reserva.comentarios) partes.push(`Comentarios: ${reserva.comentarios}`);
-  return partes.join('\n');
+async function enviarEmailBrevo({ destinatario, asunto, html, texto, replyTo }) {
+  const respuesta = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'content-type': 'application/json',
+      'api-key': BREVO_API_KEY,
+    },
+    body: JSON.stringify({
+      sender: { email: BREVO_SENDER_EMAIL, name: 'Bar Katmandu' },
+      to: [{ email: destinatario }],
+      subject: asunto,
+      htmlContent: html,
+      textContent: texto,
+      ...(replyTo ? { replyTo: { email: replyTo } } : {}),
+    }),
+  });
+
+  if (!respuesta.ok) {
+    const cuerpo = await respuesta.text().catch(() => '');
+    throw new Error(`Brevo respondió ${respuesta.status}: ${cuerpo}`);
+  }
 }
 
 // Avisa al email de la empresa de que ha entrado una nueva solicitud de reserva.
 async function enviarAvisoNuevaReserva(reserva) {
   if (!configurado) return;
 
-  const texto = formatearReserva(reserva);
   const html = `
     <h2>Nueva solicitud de reserva</h2>
     <p><strong>Fecha:</strong> ${reserva.fecha}</p>
@@ -71,15 +64,18 @@ async function enviarAvisoNuevaReserva(reserva) {
     <hr>
     <p>Puedes confirmar o cancelar esta reserva desde la caja de reservas.</p>
   `;
+  const texto =
+    `Fecha: ${reserva.fecha}\nHora: ${reserva.hora}\nPersonas: ${reserva.personas}\n` +
+    `Nombre: ${reserva.nombre}\nTeléfono: ${reserva.telefono}\nEmail del cliente: ${reserva.email}` +
+    (reserva.comentarios ? `\nComentarios: ${reserva.comentarios}` : '');
 
   try {
-    await transportador.sendMail({
-      from: `"Reservas web" <${SMTP_USER}>`,
-      to: RESERVA_EMAIL_TO,
-      replyTo: reserva.email,
-      subject: `Nueva reserva: ${reserva.nombre} · ${reserva.fecha} ${reserva.hora}`,
-      text: texto,
+    await enviarEmailBrevo({
+      destinatario: RESERVA_EMAIL_TO,
+      asunto: `Nueva reserva: ${reserva.nombre} · ${reserva.fecha} ${reserva.hora}`,
       html,
+      texto,
+      replyTo: reserva.email,
     });
   } catch (error) {
     // No dejamos que un fallo de email tumbe la creación de la reserva.
@@ -101,14 +97,16 @@ async function enviarConfirmacionCliente(reserva) {
     <hr>
     <p>Te confirmaremos por teléfono o WhatsApp en breve. Si necesitas cambiar algo, llámanos.</p>
   `;
+  const texto =
+    `Hola ${reserva.nombre}, hemos recibido tu solicitud de reserva para el ${reserva.fecha} ` +
+    `a las ${reserva.hora} (${reserva.personas} personas). Te confirmaremos por teléfono o WhatsApp en breve.`;
 
   try {
-    await transportador.sendMail({
-      from: `"Bar Katmandu" <${SMTP_USER}>`,
-      to: reserva.email,
-      subject: `Hemos recibido tu reserva · ${reserva.fecha} ${reserva.hora}`,
-      text: `Hola ${reserva.nombre}, hemos recibido tu solicitud de reserva para el ${reserva.fecha} a las ${reserva.hora} (${reserva.personas} personas). Te confirmaremos por teléfono o WhatsApp en breve.`,
+    await enviarEmailBrevo({
+      destinatario: reserva.email,
+      asunto: `Hemos recibido tu reserva · ${reserva.fecha} ${reserva.hora}`,
       html,
+      texto,
     });
   } catch (error) {
     console.error('[mailer] No se pudo enviar la confirmación al cliente:', error.message);
