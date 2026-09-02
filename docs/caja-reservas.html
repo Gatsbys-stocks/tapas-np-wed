@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Caja de reservas · Bar Katmandu</title>
+<link rel="stylesheet" href="css/estilos.css">
+<style>
+  body{background:var(--noche);color:var(--papel);}
+  .panel-caja{max-width:760px;margin:0 auto;padding:32px 20px 60px;}
+  .panel-caja h1{font-size:26px;margin-bottom:6px;}
+  .panel-caja p.sub{color:rgba(245,239,227,.7);font-size:14px;margin:0 0 22px;}
+  #btn-abrir-caja{cursor:pointer;}
+  #contenedor-caja{display:none;margin-top:24px;}
+  #contenedor-caja.abierta{display:block;}
+  .filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+  .filtros button{
+    background:transparent;border:1px solid rgba(245,239,227,.35);color:var(--papel);
+    padding:7px 14px;border-radius:20px;font-size:13px;cursor:pointer;
+  }
+  .filtros button.activo{background:var(--azafran);color:var(--noche);border-color:var(--azafran);}
+  .tarjeta-reserva-item{
+    background:var(--noche2);border:1px solid var(--linea-clara);border-radius:6px;
+    padding:16px 18px;margin-bottom:12px;
+  }
+  .tarjeta-reserva-item .fila-titulo{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .tarjeta-reserva-item h3{font-size:17px;margin:0;}
+  .etiqueta-estado{font-size:12px;padding:3px 10px;border-radius:20px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;}
+  .etiqueta-estado.pendiente{background:rgba(226,149,58,.18);color:var(--azafran);}
+  .etiqueta-estado.confirmada{background:rgba(79,122,91,.25);color:#8fd19e;}
+  .etiqueta-estado.cancelada{background:rgba(184,64,44,.2);color:#e08b7d;}
+  .tarjeta-reserva-item .detalle{font-size:14px;color:rgba(245,239,227,.85);margin-top:8px;line-height:1.6;}
+  .tarjeta-reserva-item .acciones{display:flex;gap:10px;margin-top:14px;}
+  .tarjeta-reserva-item .acciones button{
+    flex:1;padding:9px 10px;border-radius:3px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid transparent;
+  }
+  .btn-confirmar{background:var(--cardamomo);color:var(--papel);}
+  .btn-cancelar{background:transparent;border-color:rgba(245,239,227,.4)!important;color:var(--papel);}
+  #estado-caja{font-size:13px;color:rgba(245,239,227,.65);margin-top:14px;}
+  #lista-reservas p.vacio{color:rgba(245,239,227,.6);font-size:14px;}
+</style>
+</head>
+<body>
+  <div class="panel-caja">
+    <h1>Caja de reservas</h1>
+    <p class="sub">Panel interno junto al TPV — muestra las reservas hechas desde la web.</p>
+
+    <button id="btn-abrir-caja" class="btn btn-primario">Abrir caja de reservas</button>
+
+    <div id="contenedor-caja">
+      <div class="filtros">
+        <button data-filtro="pendiente" class="activo">Pendientes</button>
+        <button data-filtro="confirmada">Confirmadas</button>
+        <button data-filtro="cancelada">Canceladas</button>
+        <button data-filtro="todas">Todas</button>
+      </div>
+
+      <div id="lista-reservas"></div>
+      <p id="estado-caja"></p>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/caja-reservas.js"></script>
+</body>
+</html>

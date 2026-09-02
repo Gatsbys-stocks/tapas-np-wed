@@ -1,0 +1,337 @@
+:root{
+    --noche:#16223B;
+    --noche2:#1E2F4E;
+    --papel:#F5EFE3;
+    --tinta:#211C15;
+    --azafran:#E2953A;
+    --terracota:#B8402C;
+    --cardamomo:#4F7A5B;
+    --linea-clara:rgba(245,239,227,.16);
+    --linea-oscura:rgba(33,28,21,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--papel);
+    color:var(--tinta);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+  }
+  h1,h2,h3,.wordmark{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .envoltura{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+
+  /* ---------- cabecera ---------- */
+  header{
+    position:sticky;top:0;z-index:40;
+    background:rgba(22,34,59,.97);
+    border-bottom:1px solid var(--linea-clara);
+  }
+  header .envoltura{
+    display:flex;align-items:center;justify-content:space-between;
+    height:68px;
+  }
+  .wordmark{color:var(--papel);font-size:20px;letter-spacing:.2px;text-decoration:none;}
+  .wordmark em{color:var(--azafran);font-style:italic;font-weight:500;}
+  nav{display:flex;gap:28px;}
+  nav a{
+    color:var(--papel);opacity:.82;text-decoration:none;font-size:14.5px;font-weight:500;
+    transition:opacity .15s;
+  }
+  nav a:hover{opacity:1;}
+  .btn-nav-llamar{
+    background:var(--azafran);color:var(--noche);padding:9px 16px;border-radius:3px;
+    font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;
+  }
+  #btn-menu-movil{display:none;background:none;border:none;color:var(--papel);font-size:26px;cursor:pointer;padding:4px 8px;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg, rgba(22,34,59,.55) 0%, rgba(22,34,59,.86) 62%, var(--noche) 100%),
+               url('img/momomix.jpg') center 30% / cover no-repeat;
+    color:var(--papel);
+    padding:96px 0 0;
+  }
+  .hero .envoltura{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end;
+    padding-bottom:64px;
+  }
+  .hero h1{
+    font-size:clamp(34px, 5vw, 56px);
+    line-height:1.08;
+    max-width:12.5ch;
+  }
+  .hero p.intro{
+    margin-top:20px;max-width:42ch;font-size:17px;color:rgba(245,239,227,.88);
+  }
+  .hero .cta-fila{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:13px 24px;border-radius:3px;text-decoration:none;
+    font-weight:600;font-size:15px;border:1px solid transparent;cursor:pointer;
+  }
+  .btn-primario{background:var(--azafran);color:var(--noche);}
+  .btn-secundario{border-color:rgba(245,239,227,.55);color:var(--papel);}
+  .hero-dato{
+    justify-self:end;text-align:right;color:rgba(245,239,227,.8);font-size:14.5px;
+  }
+  .hero-dato b{display:block;color:var(--papel);font-family:'Fraunces',serif;font-size:26px;font-weight:600;}
+
+  .franja-info{
+    background:var(--noche2);color:var(--papel);border-top:1px solid var(--linea-clara);
+  }
+  .franja-info .envoltura{
+    display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;
+    padding-top:18px;padding-bottom:18px;font-size:14px;
+  }
+  .franja-info .item{display:flex;align-items:baseline;gap:8px;}
+  .franja-info .item span.etiqueta{color:var(--azafran);font-weight:600;}
+  .franja-info a{text-decoration:none;}
+  .franja-info a:hover{text-decoration:underline;}
+
+  /* ---------- secciones generales ---------- */
+  section{padding:88px 0;}
+  .oscuro{background:var(--noche);color:var(--papel);}
+  .oscuro h2{color:var(--papel);}
+  .cabecera-seccion{max-width:56ch;margin-bottom:48px;}
+  .cabecera-seccion h2{font-size:clamp(28px,3.4vw,38px);line-height:1.15;}
+  .cabecera-seccion p{margin-top:14px;font-size:16.5px;color:inherit;opacity:.86;}
+
+  /* ---------- sobre nosotros ---------- */
+  .sobre{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .sobre-texto p{font-size:16.5px;margin:0 0 16px;max-width:48ch;}
+  .sobre-texto p:last-child{margin-bottom:0;}
+  .sobre-fotos{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;}
+  .sobre-fotos img{width:100%;height:100%;object-fit:cover;}
+  .sobre-fotos .alta{grid-row:span 2;aspect-ratio:3/4;border-radius:2px;}
+  .sobre-fotos .baja{aspect-ratio:4/3;border-radius:2px;}
+
+  /* ---------- carta ---------- */
+  .rejilla-carta{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--linea-clara);
+    border:1px solid var(--linea-clara);
+  }
+  .tarjeta-plato{background:var(--noche);padding:26px 24px 28px;}
+  .tarjeta-plato .foto{width:100%;aspect-ratio:4/3;overflow:hidden;margin-bottom:18px;border-radius:2px;}
+  .tarjeta-plato .foto img{width:100%;height:100%;object-fit:cover;}
+  .tarjeta-plato h3{font-size:19px;color:var(--papel);margin-bottom:12px;}
+  .lista-platos{list-style:none;margin:0;padding:0;}
+  .lista-platos li{
+    display:flex;justify-content:space-between;gap:12px;
+    padding:7px 0;font-size:14.5px;color:rgba(245,239,227,.86);
+    border-bottom:1px dotted rgba(245,239,227,.18);
+  }
+  .lista-platos li:last-child{border-bottom:none;}
+  .lista-platos b{color:var(--azafran);font-weight:600;white-space:nowrap;}
+  .nota-carta{
+    margin-top:30px;font-size:14.5px;color:rgba(245,239,227,.72);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+  }
+  .nota-carta a{color:var(--azafran);text-decoration:none;font-weight:600;}
+
+  /* ---------- galería ---------- */
+  .galeria{
+    display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:130px;gap:8px;
+  }
+  .galeria figure{margin:0;overflow:hidden;border-radius:2px;}
+  .galeria img{width:100%;height:100%;object-fit:cover;}
+  .galeria .g1{grid-column:span 2;grid-row:span 2;}
+  .galeria .g2{grid-column:span 2;grid-row:span 1;}
+  .galeria .g3{grid-column:span 2;grid-row:span 2;}
+  .galeria .g4{grid-column:span 2;grid-row:span 1;}
+
+  /* ---------- reseñas ---------- */
+  .resenas{display:flex;align-items:center;gap:36px;flex-wrap:wrap;}
+  .resenas .puntuacion{
+    font-family:'Fraunces',serif;font-size:52px;font-weight:600;line-height:1;
+  }
+  .resenas .estrellas{color:var(--azafran);font-size:19px;letter-spacing:2px;margin-top:8px;}
+  .resenas .detalle{font-size:14.5px;color:var(--tinta);opacity:.75;margin-top:6px;}
+  .resenas .cita{
+    max-width:44ch;font-family:'Fraunces',serif;font-style:italic;font-size:19px;
+    line-height:1.5;color:var(--tinta);
+  }
+  .resenas .enlace-google{
+    display:inline-block;margin-top:14px;font-size:14.5px;font-weight:600;
+    color:var(--terracota);text-decoration:none;
+  }
+
+  /* ---------- ubicación ---------- */
+  .ubicacion{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .ficha-direccion dt{
+    font-size:12.5px;letter-spacing:.3px;color:var(--azafran);margin-top:22px;
+  }
+  .ficha-direccion dt:first-child{margin-top:0;}
+  .ficha-direccion dd{margin:4px 0 0;font-size:17px;color:var(--papel);}
+  .ficha-direccion a{text-decoration:none;border-bottom:1px solid rgba(245,239,227,.4);}
+  .ilustracion-mapa{
+    aspect-ratio:1/1;border:1px solid var(--linea-clara);border-radius:3px;
+    display:flex;align-items:center;justify-content:center;padding:30px;
+  }
+  .ilustracion-mapa svg{width:100%;height:100%;}
+  .mapa-real{
+    aspect-ratio:1/1;border:1px solid var(--linea-clara);border-radius:3px;
+    overflow:hidden;filter:grayscale(.15) contrast(1.03);
+  }
+  .mapa-real iframe{width:100%;height:100%;border:0;display:block;}
+
+  /* ---------- redes sociales ---------- */
+  .redes{display:flex;gap:10px;}
+  .redes a{
+    width:36px;height:36px;border-radius:50%;
+    border:1px solid rgba(245,239,227,.4);
+    display:flex;align-items:center;justify-content:center;
+    text-decoration:none;color:var(--papel);
+    transition:background .15s,border-color .15s;
+  }
+  .redes a:hover{background:var(--azafran);border-color:var(--azafran);color:var(--noche);}
+  .redes svg{width:17px;height:17px;fill:currentColor;}
+  footer .redes a{border-color:rgba(245,239,227,.25);}
+  .redes-sobre{margin-top:26px;}
+  .redes-sobre a{width:42px;height:42px;border-color:rgba(33,28,21,.25);color:var(--tinta);}
+  .redes-sobre svg{width:19px;height:19px;}
+
+  /* ---------- reservar ---------- */
+  .reservar{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+  }
+  .tarjeta-reserva{
+    background:var(--noche2);border:1px solid var(--linea-clara);border-radius:4px;
+    padding:34px 32px;
+  }
+  .tarjeta-reserva p.aviso{
+    display:inline-block;font-size:12.5px;font-weight:600;color:var(--azafran);
+    border:1px solid var(--azafran);border-radius:20px;padding:4px 12px;margin:0 0 18px;
+  }
+  .tarjeta-reserva .campo{margin-bottom:16px;}
+  .tarjeta-reserva label{display:block;font-size:13px;color:rgba(245,239,227,.7);margin-bottom:6px;}
+  .tarjeta-reserva input,.tarjeta-reserva select{
+    width:100%;padding:11px 12px;border-radius:3px;border:1px solid rgba(245,239,227,.3);
+    background:rgba(245,239,227,.06);color:var(--papel);font-family:inherit;font-size:14.5px;
+  }
+  /* la lista desplegable del navegador siempre pinta fondo blanco,
+     así que el texto de las opciones tiene que ser oscuro para leerse */
+  .tarjeta-reserva select option{
+    color:#211c15;
+    background:#ffffff;
+  }
+  .tarjeta-reserva input[readonly]{cursor:pointer;}
+  .tarjeta-reserva textarea{
+    width:100%;padding:11px 12px;border-radius:3px;border:1px solid rgba(245,239,227,.3);
+    background:rgba(245,239,227,.06);color:var(--papel);font-family:inherit;font-size:14.5px;
+    resize:vertical;min-height:70px;
+  }
+  .tarjeta-reserva .fila-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .tarjeta-reserva .btn-primario{width:100%;text-align:center;border:none;margin-top:6px;}
+  .tarjeta-reserva small{display:block;margin-top:14px;font-size:12.5px;color:rgba(245,239,227,.55);}
+
+  /* ---------- pie ---------- */
+  footer{background:#0F1830;color:rgba(245,239,227,.6);padding:38px 0;font-size:13.5px;}
+  footer .envoltura{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  footer strong{color:var(--papel);}
+  .aviso-legal{margin-top:18px;padding-top:18px;border-top:1px solid var(--linea-clara);}
+  .aviso-legal p{margin:0;font-size:12px;color:rgba(245,239,227,.45);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:880px){
+    nav{
+      position:fixed;inset:68px 0 0 0;background:var(--noche);z-index:39;
+      flex-direction:column;padding:28px 24px;gap:4px;
+      transform:translateX(100%);transition:transform .22s ease;
+      overflow-y:auto;
+    }
+    nav.abierto{transform:translateX(0);}
+    nav a{padding:14px 0;border-bottom:1px solid var(--linea-clara);font-size:16px;}
+    .btn-nav-llamar{display:inline-block;margin-top:16px;text-align:center;}
+    #btn-menu-movil{display:block;}
+    .hero .envoltura{grid-template-columns:1fr;}
+    .hero-dato{justify-self:start;text-align:left;}
+    .sobre,.ubicacion,.reservar{grid-template-columns:1fr;}
+    .reservar{gap:32px;}
+    .sobre-fotos{order:-1;grid-template-columns:1fr;}
+    .sobre-fotos .baja{display:none;}
+    .sobre-fotos .alta{aspect-ratio:16/10;grid-row:span 1;}
+    .rejilla-carta{grid-template-columns:repeat(2,1fr);}
+    .galeria{grid-template-columns:repeat(4,1fr);grid-auto-rows:110px;}
+    .galeria .g1,.galeria .g3{grid-column:span 2;grid-row:span 2;}
+  }
+  @media (max-width:560px){
+    section{padding:60px 0;}
+    .rejilla-carta{grid-template-columns:repeat(2,1fr);gap:10px;background:transparent;border:none;}
+    .tarjeta-plato{padding:14px 12px 16px;border-radius:4px;border:1px solid var(--linea-clara);}
+    .tarjeta-plato .foto{margin-bottom:12px;}
+    .tarjeta-plato h3{font-size:16px;margin-bottom:8px;}
+    .lista-platos li{font-size:12.5px;padding:5px 0;}
+    .galeria{grid-template-columns:repeat(2,1fr);gap:12px;}
+    .galeria .g1,.galeria .g2,.galeria .g3,.galeria .g4{grid-column:span 1;grid-row:span 1;aspect-ratio:1/1;height:auto;}
+    .franja-info .envoltura{flex-direction:column;padding-top:12px;padding-bottom:12px;gap:6px;}
+    .franja-info .item{font-size:13px;}
+    .hero{padding-top:84px;}
+    .hero .envoltura{padding-bottom:44px;gap:28px;}
+    .hero-dato{text-align:right;justify-self:end;}
+    .resenas{gap:20px;}
+    .resenas .puntuacion{font-size:42px;}
+    .tarjeta-reserva{padding:26px 20px;}
+    .tarjeta-reserva .fila-2{grid-template-columns:1fr;gap:0;}
+    footer .envoltura{flex-direction:column;align-items:flex-start;}
+  }
+
+/* ---------- opiniones de clientes ---------- */
+.opiniones-contenedor{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start;
+}
+.lista-opiniones{display:flex;flex-direction:column;gap:16px;}
+.tarjeta-opinion{
+  background:var(--noche2);border:1px solid var(--linea-clara);border-radius:4px;
+  padding:20px 22px;
+}
+.tarjeta-opinion .cabecera-opinion{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px;
+}
+.tarjeta-opinion .nombre-opinion{font-weight:600;color:var(--papel);}
+.tarjeta-opinion .fecha-opinion{font-size:12.5px;color:rgba(245,239,227,.55);}
+.tarjeta-opinion .estrellas-opinion{color:var(--azafran);letter-spacing:1px;margin-bottom:8px;}
+.tarjeta-opinion .texto-opinion{font-size:14.5px;color:rgba(245,239,227,.86);margin:0;}
+.opiniones-vacio{color:rgba(245,239,227,.6);font-size:14.5px;}
+.opiniones-error{color:var(--terracota);font-size:14.5px;}
+
+.tarjeta-opinion-form{
+  background:var(--noche2);border:1px solid var(--linea-clara);border-radius:4px;
+  padding:30px 28px;
+}
+.tarjeta-opinion-form h3{color:var(--papel);font-size:19px;margin-bottom:18px;}
+.tarjeta-opinion-form .campo{margin-bottom:16px;}
+.tarjeta-opinion-form label{display:block;font-size:13px;color:rgba(245,239,227,.7);margin-bottom:6px;}
+.tarjeta-opinion-form input,.tarjeta-opinion-form textarea{
+  width:100%;padding:11px 12px;border-radius:3px;border:1px solid rgba(245,239,227,.3);
+  background:rgba(245,239,227,.06);color:var(--papel);font-family:inherit;font-size:14.5px;resize:vertical;
+}
+.selector-estrellas{display:flex;gap:6px;}
+.selector-estrellas .estrella{
+  background:none;border:none;font-size:26px;line-height:1;cursor:pointer;
+  color:rgba(245,239,227,.3);padding:2px;transition:color .12s;
+}
+.selector-estrellas .estrella.activa,.selector-estrellas .estrella:hover,
+.selector-estrellas .estrella:hover ~ .estrella{color:var(--azafran);}
+.tarjeta-opinion-form .btn-primario{width:100%;text-align:center;border:none;margin-top:4px;}
+.estado-opinion{font-size:13px;margin:12px 0 0;min-height:16px;}
+.estado-opinion.ok{color:var(--cardamomo);}
+.estado-opinion.error{color:var(--terracota);}
+
+/* ---------- estado del formulario de reserva ---------- */
+.estado-reserva{font-size:13px;margin-top:12px;min-height:16px;}
+.estado-reserva.ok{color:#8fd19e;}
+.estado-reserva.error{color:#e08b7d;}
+.tarjeta-reserva button[disabled]{opacity:.6;cursor:not-allowed;}
+
+@media (max-width:880px){
+  .opiniones-contenedor{grid-template-columns:1fr;}
+}
