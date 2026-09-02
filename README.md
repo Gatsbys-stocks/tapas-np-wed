@@ -104,4 +104,5 @@ Ambas rutas validan los datos en el servidor, no solo en el formulario del naveg
 
 ## Licencia
 
-MIT
+© 2026 9's. Todos los derechos reservados.
+Proyecto desarrollado para Bar Katmandu.
