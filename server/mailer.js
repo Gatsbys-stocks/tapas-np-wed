@@ -8,6 +8,16 @@
 // para que la web nunca deje de aceptar reservas por un fallo de email.
 
 const nodemailer = require('nodemailer');
+const dns = require('dns');
+
+// Muchos hosts en la nube (Render incluido) tienen rota la ruta IPv6 hacia
+// Gmail: Node intenta conectar por IPv6 primero, nunca llega respuesta y la
+// conexión SMTP muere con "Connection timeout". Forzamos IPv4 para evitarlo.
+try {
+  dns.setDefaultResultOrder('ipv4first');
+} catch (error) {
+  // Node < 17 no tiene este método; en ese caso seguimos con el comportamiento por defecto.
+}
 
 const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, RESERVA_EMAIL_TO } = process.env;
 
@@ -21,6 +31,8 @@ if (configurado) {
     port: Number(SMTP_PORT) || 587,
     secure: Number(SMTP_PORT) === 465, // true solo si se usa el puerto 465
     auth: { user: SMTP_USER, pass: SMTP_PASS },
+    family: 4, // fuerza IPv4 también a nivel de socket, por si acaso
+    connectionTimeout: 15000,
   });
 } else {
   console.warn(
