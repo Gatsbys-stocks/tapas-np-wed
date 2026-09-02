@@ -1,4 +1,4 @@
-  :root{
+:root{
     --noche:#16223B;
     --noche2:#1E2F4E;
     --papel:#F5EFE3;
@@ -216,6 +216,18 @@
   .tarjeta-reserva input,.tarjeta-reserva select{
     width:100%;padding:11px 12px;border-radius:3px;border:1px solid rgba(245,239,227,.3);
     background:rgba(245,239,227,.06);color:var(--papel);font-family:inherit;font-size:14.5px;
+  }
+  /* la lista desplegable del navegador siempre pinta fondo blanco,
+     así que el texto de las opciones tiene que ser oscuro para leerse */
+  .tarjeta-reserva select option{
+    color:#211c15;
+    background:#ffffff;
+  }
+  .tarjeta-reserva input[readonly]{cursor:pointer;}
+  .tarjeta-reserva textarea{
+    width:100%;padding:11px 12px;border-radius:3px;border:1px solid rgba(245,239,227,.3);
+    background:rgba(245,239,227,.06);color:var(--papel);font-family:inherit;font-size:14.5px;
+    resize:vertical;min-height:70px;
   }
   .tarjeta-reserva .fila-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   .tarjeta-reserva .btn-primario{width:100%;text-align:center;border:none;margin-top:6px;}
