@@ -269,17 +269,25 @@
           </div>
           <div class="campo">
             <label for="r-hora">Hora</label>
-            <input type="time" id="r-hora" name="hora" min="19:00" max="23:30" required>
+            <select id="r-hora" name="hora" required>
+              <option value="">Selecciona</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+              <option value="21:30">21:30</option>
+              <option value="22:00">22:00</option>
+              <option value="22:30">22:30</option>
+              <option value="23:00">23:00</option>
+              <option value="23:30">23:30</option>
+            </select>
           </div>
         </div>
         <div class="fila-2">
           <div class="campo">
             <label for="r-personas">Personas</label>
-            <select id="r-personas" name="personas" required>
-              <option value="">Selecciona</option>
-              <option>1</option><option>2</option><option>3</option><option>4</option>
-              <option>5</option><option>6</option><option>7+</option>
-            </select>
+            <input type="number" id="r-personas" name="personas" min="1" max="30" placeholder="¿Cuántos sois?" required>
           </div>
           <div class="campo">
             <label for="r-nombre">Nombre</label>
