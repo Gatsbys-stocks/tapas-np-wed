@@ -11,6 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (campoFecha) {
     const hoy = new Date().toISOString().split('T')[0];
     campoFecha.setAttribute('min', hoy);
+
+    // El campo es "readonly" para que no se pueda escribir una fecha a mano
+    // (evita fechas imposibles como 31/02). Al hacer clic en cualquier parte
+    // del campo, forzamos que se abra el calendario nativo.
+    campoFecha.addEventListener('click', () => {
+      if (typeof campoFecha.showPicker === 'function') {
+        campoFecha.showPicker();
+      }
+    });
   }
 
   function mostrarEstado(mensaje, tipo) {
@@ -27,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
       personas: form.personas.value,
       nombre: form.nombre.value.trim(),
       telefono: form.telefono.value.trim(),
+      comentarios: form.comentarios.value.trim(),
     };
 
     if (!datos.fecha || !datos.hora || !datos.personas || !datos.nombre || !datos.telefono) {
