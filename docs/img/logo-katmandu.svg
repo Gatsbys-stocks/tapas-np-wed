@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <radialGradient id="g" cx="40%" cy="35%" r="75%">
+      <stop offset="0" stop-color="#8a3340"/><stop offset="1" stop-color="#561c25"/>
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="49" fill="url(#g)"/>
+  <g fill="#fff">
+    <circle cx="50" cy="9.5" r="1.6"/>
+    <path d="M49 11h2l.6 6h-3.2z"/>
+    <path d="M24 31c6 0 11-2 15-7l3-7h16l3 7c4 5 9 7 15 7-4 1.6-9 1.6-13 .4H37c-4 1.2-9 1.2-13-.4z"/>
+    <path d="M38 31h24v6H38z"/>
+    <path d="M8 50c8 0 16-3 21-9l3-5h36l3 5c5 6 13 9 21 9-5 2-12 2-18 .6H26c-6 1.4-13 1.4-18-.6z"/>
+    <path d="M20 50h60v24.5H20z"/>
+  </g>
+  <g fill="#561c25">
+    <path d="M50 30l3.2 7h-1.6l4 7.5h-2l5 9h-2.4l5.6 10h-3l6 11H34.2l6-11h-3l5.6-10h-2.4l5-9h-2l4-7.5h-1.6z"/>
+    <path d="M39 46l2.6 6h-1.3l3.2 6.5h-1.6l4 7.5h-1.8l4.4 8.5H29.5l4.4-8.5h-1.8l4-7.5h-1.6l3.2-6.5h-1.3z"/>
+    <path d="M61 46l2.6 6h-1.3l3.2 6.5h-1.6l4 7.5h-1.8l4.4 8.5H51.5l4.4-8.5h-1.8l4-7.5h-1.6l3.2-6.5h-1.3z"/>
+    <path d="M30 56l2 4.6h-1l2.5 5h-1.2l3 6h-1.3l3 6.5H22l3-6.5h-1.3l3-6h-1.2l2.5-5h-1z"/>
+    <path d="M70 56l2 4.6h-1l2.5 5h-1.2l3 6h-1.3l3 6.5H62l3-6.5h-1.3l3-6h-1.2l2.5-5h-1z"/>
+  </g>
+</svg>
