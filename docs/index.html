@@ -6,11 +6,9 @@
 <meta name="theme-color" content="#7b2833">
 <title>Katmandu — Bar y restaurante nepalí en Gràcia, Barcelona</title>
 <meta name="description" content="Bar Katmandu: momos, curry, biryani y cócteles en una terraza de Gràcia, Barcelona. Carrer del Torrent de l'Olla, 148.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/raleway-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link href="fonts/fonts.css" rel="stylesheet">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-<link href="favicon.svg" rel="icon">
 <link rel="icon" href="img/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="img/favicon-16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -86,7 +84,7 @@
     </div>
     <p class="hero-dato"><b>4,9</b> de valoración en Google</p>
   </div>
-  <div class="paisaje" aria-hidden="true"><img src="img/paisaje.jpg" alt="" width="2158" height="560"></div>
+  <div class="paisaje" aria-hidden="true"><img src="img/paisaje-1600.webp" srcset="img/paisaje-800.webp 800w, img/paisaje-1600.webp 1600w" sizes="100vw" alt="" width="2158" height="560" fetchpriority="high"></div>
   <div class="franja-info">
     <div class="envoltura">
       <div class="item"><span class="etiqueta">Dónde</span> Carrer del Torrent de l'Olla, 148 · Gràcia</div>
@@ -100,8 +98,8 @@
 <section id="sobre">
   <div class="envoltura sobre">
     <div class="sobre-fotos">
-      <img class="alta" src="img/chewala.jpg" alt="Pollo especiado con verduras frescas de Bar Katmandu">
-      <img class="baja" src="img/tapas1.jpg" alt="Pyaji pakora con salsas caseras en Bar Katmandu">
+      <img class="alta" src="img/chewala.webp" alt="Pollo especiado con verduras frescas de Bar Katmandu" loading="lazy" decoding="async">
+      <img class="baja" src="img/tapas1.webp" alt="Pyaji pakora con salsas caseras en Bar Katmandu" loading="lazy" decoding="async">
     </div>
     <div class="sobre-texto">
       <div class="cabecera-seccion" style="margin-bottom:24px;">
@@ -276,7 +274,7 @@
             <p class="d-otros" lang="en">Steamed dumplings filled with chicken, pork or minced vegetables and seasoned with Nepalese spices.</p>
             <p class="d-otros" lang="ca">Empanadilles al vapor farcides de pollastre, porc o verdures picades, amanides amb espècies nepaleses.</p>
           </div>
-          <img src="img/momo.png" alt="Mo:Mo, empanadilla nepalí al vapor" width="150" height="143">
+          <img src="img/momo.webp" alt="Mo:Mo, empanadilla nepalí al vapor" width="150" height="143" loading="lazy" decoding="async">
         </div>
         <ul class="platos">
           <li><div class="plato-fila"><span class="plato-nombre">Mo:Mo <small>(8 unidades)</small> <span class="momo-modo">al vapor</span></span><span class="plato-precio">7,95 €</span></div></li>
@@ -487,7 +485,7 @@
     </div>
     <p class="nota-carta">En la barra también hay cócteles, sangría, cerveza, refrescos, vino, cava y tequila shots. Si tienes alguna alergia, <a href="tel:+34675192509">llámanos</a> o díselo a quien te atienda.</p>
   </div>
-  <div class="paisaje paisaje-pie" aria-hidden="true"><img src="img/paisaje.jpg" alt="" width="2158" height="560" loading="lazy"></div>
+  <div class="paisaje paisaje-pie" aria-hidden="true"><img src="img/paisaje-1600.webp" srcset="img/paisaje-800.webp 800w, img/paisaje-1600.webp 1600w" sizes="100vw" alt="" width="2158" height="560" loading="lazy" decoding="async"></div>
 </section>
 
 <section id="galeria">
@@ -496,13 +494,13 @@
       <h2>De la cocina a la mesa</h2>
     </div>
     <div class="galeria">
-      <figure class="g1"><img src="img/momomix.jpg" alt="Bandeja de momos al vapor con salsas caseras"></figure>
-      <figure class="g2"><img src="img/porkchilli.jpg" alt="Pork Chilly, cerdo salteado con pimientos y cebolla"></figure>
-      <figure class="g2"><img src="img/aloojira.jpg" alt="Aloo Jeera, patatas salteadas con comino"></figure>
-      <figure class="g3"><img src="img/chewala.jpg" alt="Pollo especiado con verduras frescas"></figure>
-      <figure class="g4"><img src="img/momojhol.jpg" alt="Momo Jhol, dumplings en caldo especiado"></figure>
-      <figure class="g4"><img src="img/tapas1.jpg" alt="Pyaji pakora con salsas"></figure>
-      <figure class="g2"><img src="img/postre.jpg" alt="Kheer, arroz con leche nepalí"></figure>
+      <figure class="g1"><img src="img/momomix.webp" alt="Bandeja de momos al vapor con salsas caseras" loading="lazy" decoding="async"></figure>
+      <figure class="g2"><img src="img/porkchilli.webp" alt="Pork Chilly, cerdo salteado con pimientos y cebolla" loading="lazy" decoding="async"></figure>
+      <figure class="g2"><img src="img/aloojira.webp" alt="Aloo Jeera, patatas salteadas con comino" loading="lazy" decoding="async"></figure>
+      <figure class="g3"><img src="img/chewala.webp" alt="Pollo especiado con verduras frescas" loading="lazy" decoding="async"></figure>
+      <figure class="g4"><img src="img/momojhol.webp" alt="Momo Jhol, dumplings en caldo especiado" loading="lazy" decoding="async"></figure>
+      <figure class="g4"><img src="img/tapas1.webp" alt="Pyaji pakora con salsas" loading="lazy" decoding="async"></figure>
+      <figure class="g2"><img src="img/postre.webp" alt="Kheer, arroz con leche nepalí" loading="lazy" decoding="async"></figure>
     </div>
   </div>
 </section>
@@ -523,8 +521,14 @@
 
 <section id="opiniones" class="oscuro">
   <div class="envoltura">
-    <!-- Widget de Google Reviews (Elfsight) — sustituye REEMPLAZA-ESTE-ID por tu ID real del widget -->
-    <div class="elfsight-app-7311b132-948c-493b-af32-d16ce3f6c201" data-elfsight-app-lazy></div>
+    <div class="resenas-externas" id="resenas-google">
+      <div class="cabecera-seccion" style="margin-bottom:22px;">
+        <h2>Opiniones en Google</h2>
+        <p>Las reseñas las muestra un servicio externo (Elfsight), que puede usar cookies. Solo se cargan si lo pides.</p>
+      </div>
+      <button type="button" class="btn btn-primario" data-cargar="resenas">Ver las reseñas</button>
+      <div class="elfsight-app-7311b132-948c-493b-af32-d16ce3f6c201" data-elfsight-app-lazy hidden></div>
+    </div>
   </div>
 </section>
 
@@ -549,13 +553,11 @@
         <a class="btn btn-primario" href="https://maps.app.goo.gl/CWipvetGvdjB5LET8?g_st=aw" target="_blank" rel="noopener">Abrir en Google Maps</a>
       </div>
     </div>
-    <div class="mapa-real">
-      <iframe
-        src="https://www.google.com/maps?q=Carrer+del+Torrent+de+l%27Olla+148+Barcelona&output=embed"
-        title="Mapa de Bar Katmandu en Carrer del Torrent de l'Olla, 148, Barcelona"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+    <div class="mapa-real bloqueado" data-mapa="https://www.google.com/maps?q=Carrer+del+Torrent+de+l%27Olla+148+Barcelona&amp;output=embed">
+      <div class="externo-aviso">
+        <p>El mapa lo muestra Google Maps, que puede usar cookies. Solo se carga si lo pides.</p>
+        <button type="button" class="btn btn-primario" data-cargar="mapa">Ver el mapa</button>
+      </div>
     </div>
   </div>
 </section>
@@ -617,7 +619,7 @@
         </div>
         <button type="submit" class="btn btn-primario" id="btn-enviar-reserva">Enviar solicitud</button>
         <p class="estado-reserva" id="estado-reserva" role="status"></p>
-        <small>Al enviar este formulario aceptas que te contactemos para confirmar tu reserva.</small>
+        <small>Usaremos tus datos solo para gestionar tu reserva y contactarte para confirmarla. Más información en la <a href="privacidad.html">política de privacidad</a>.</small>
       </form>
     </div>
   </div>
@@ -633,14 +635,15 @@
     </div>
   </div>
   <div class="envoltura aviso-legal">
-    <p>© 2026 9's. Todos los derechos reservados. Proyecto desarrollado para Bar Katmandu.</p>
+    <p class="enlaces-legales"><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a></p>
+    <p>© 2026 <a class="firma" href="https://webbuild.daylli9s.site/" target="_blank" rel="noopener">9's</a>. Todos los derechos reservados. Proyecto desarrollado para Bar Katmandu.</p>
   </div>
 </footer>
 
 <script src="js/config.js"></script>
 <script src="js/menu.js"></script>
 <script src="js/reservas.js"></script>
-<script src="https://elfsightcdn.com/platform.js" async></script>
+<script src="js/externos.js"></script>
 
 <script data-goatcounter="https://bar-katmandu.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>

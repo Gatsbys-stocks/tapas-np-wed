@@ -386,3 +386,33 @@
 }
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}nav{transition:none;}}
+
+/* ---------- contenidos de terceros que se cargan al pulsar ---------- */
+.mapa-real.bloqueado{
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;
+  background:linear-gradient(rgba(79,26,34,.82),rgba(79,26,34,.9)), url('../img/paisaje-800.webp') center/cover no-repeat;
+}
+.externo-aviso{max-width:34ch;}
+.externo-aviso p{margin:0 0 16px;font-size:14.5px;color:rgba(253,251,248,.9);}
+.resenas-externas .btn{border:none;}
+.enlaces-legales{margin:0 0 6px !important;}
+.enlaces-legales a{color:rgba(253,251,248,.75);text-decoration:none;}
+.enlaces-legales a:hover{text-decoration:underline;}
+.tarjeta-reserva small a{color:var(--azafran);}
+
+/* ---------- páginas legales ---------- */
+.legal{max-width:760px;margin:0 auto;padding:56px 24px 72px;}
+.legal h1{font-size:clamp(28px,4vw,38px);color:var(--granate);margin-bottom:8px;}
+.legal .actualizado{font-size:13.5px;color:#756e69;margin:0 0 32px;}
+.legal h2{font-size:19px;color:var(--granate);margin:30px 0 10px;}
+.legal p,.legal li{font-size:15.5px;line-height:1.65;}
+.legal ul{padding-left:20px;}
+.legal table{width:100%;border-collapse:collapse;font-size:14.5px;margin:10px 0;}
+.legal th,.legal td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--linea-oscura);}
+.legal th{background:#f3ece6;}
+.legal .rellenar{background:#fff3c4;padding:0 4px;border-radius:3px;}
+.legal a{color:var(--granate);}
+.volver{display:inline-block;margin-bottom:26px;color:var(--granate);font-weight:600;text-decoration:none;}
+
+.aviso-legal a.firma{color:rgba(253,251,248,.75);text-decoration:none;border-bottom:1px solid rgba(253,251,248,.35);}
+.aviso-legal a.firma:hover{color:#fff;border-bottom-color:#fff;}
